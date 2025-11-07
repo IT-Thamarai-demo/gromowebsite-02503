@@ -205,7 +205,14 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Animated Background */}
+      <div className="animated-gradient-bg">
+        <div className="animated-orb animated-orb-1"></div>
+        <div className="animated-orb animated-orb-2"></div>
+        <div className="animated-orb animated-orb-3"></div>
+      </div>
+
       {/* Hero Section */}
       <section className="pt-20 pb-16 relative overflow-hidden parallax-wrapper">
         <div 
