@@ -9,7 +9,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: "How much does a website cost?",
-      answer: "Our pricing starts from ₹15,000 for basic websites and goes up to ₹50,000 for full e-commerce solutions. We offer transparent pricing with no hidden costs, and we'll provide a detailed quote based on your specific requirements."
+      answer: "Our pricing starts from ₹699 for basic websites and ₹1,999 for full e-commerce solutions with third-party hosting. We offer transparent pricing with no hidden costs, and we'll provide a detailed quote based on your specific requirements."
     },
     {
       question: "How fast can I get my website?",

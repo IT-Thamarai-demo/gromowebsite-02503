@@ -35,7 +35,8 @@ const Terms = () => {
                 Payment terms are agreed upon during project initiation. Standard pricing:
               </p>
               <ul className="list-disc list-inside text-gray-600 mb-4">
-                <li>Basic Website: ₹1,500</li>
+                <li>Basic Website: ₹699</li>
+                <li>E-commerce Store: ₹1,999 (with third-party hosting)</li>
                 <li>E-commerce Website: ₹3,000</li>
                 <li>Custom projects: As per quotation</li>
               </ul>

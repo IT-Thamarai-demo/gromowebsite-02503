@@ -39,15 +39,29 @@ const Contact = () => {
 
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Message sent successfully!",
         description: "Thank you! We'll get back to you shortly."
       });
       setFormData({ fullName: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -164,6 +178,14 @@ const Contact = () => {
                           >
                             +91 75984 80664
                           </a>
+                          <br />
+                          <a
+                            href="tel:+919360623770"
+                            className="text-blue-600 hover:text-blue-800 transition-colors"
+                            title="Call us"
+                          >
+                            +91 93606 23770
+                          </a>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3">
@@ -211,13 +233,18 @@ const Contact = () => {
                 {/* Map Placeholder */}
                 <Card className="shadow-lg">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-4">Our Reach</h3>
-                    <div className="bg-gradient-to-br from-blue-100 to-indigo-200 rounded-lg h-48 flex items-center justify-center">
-                      <div className="text-center text-gray-700">
-                        <MapPin className="h-12 w-12 mx-auto mb-2" />
-                        <p className="font-medium">Serving businesses across India</p>
-                        <p className="text-sm">Remote team, nationwide service</p>
-                      </div>
+                    <h3 className="text-xl font-semibold mb-4">Our Location</h3>
+                    <div className="rounded-lg overflow-hidden">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14287.321340490033!2d79.12093006258264!3d10.754733381140618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1762576402198!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="300" 
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Gromo Location"
+                      ></iframe>
                     </div>
                   </CardContent>
                 </Card>
